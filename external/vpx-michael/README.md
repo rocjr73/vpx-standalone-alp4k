@@ -31,7 +31,7 @@
 - If the table requires any additional files/steps, click `GO TO TABLE` after adding, and the TM will open to the relevant table folder.
 - Create a folder titled `pupvideos` in the Michael table folder
 - Download the table with pup file Michael.zip version listed above.
-- unzip the Pack Michael.zip on your computer the vpx.and pup is included in this zip 
-- Open the michael folder and replace the playlist.pup, screens.pup, and triggers.pup (the files needed are on the vpuniverse download page. You need to scroll through the 1st page of comments and about halfway down you will see the 3 updated downloadable links for the settings for 2 screens + realDMD users (Without these updated files you will not have a working dmd with scores.
+- unzip the Pack Michael.zip on your computer the vpx.and pup files are included in this zip 
+- Open the pupvideos/michael folder and replace the playlist.pup, screens.pup, and triggers.pup which I have included. These are for the settings for 2 screens + realDMD users (Without these updated files you will not have a working dmd with scores.
 - After replacing those files add the Michael folder to the pupvideos folder you created in the Michael folder in the table manager. 
 - Enjoy! "Hee-Hee!", "Shamone!"
