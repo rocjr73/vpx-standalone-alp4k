@@ -1,0 +1,13 @@
+ScreenNum,Folder,Des,AlphaSort,RestSeconds,Volume,Priority
+0,00,,0,-1,100,0
+0,BackglassLoop,,0,-1,100,0
+0,Bg_intro,,0,-1,100,0
+0,"Game over",,0,-1,100,0
+0,lock,,0,-1,100,0
+0,Pupoverlay,,0,-1,100,0
+0,song,,0,-1,100,0
+0,Topper,,0,-1,100,0
+0,Videos_call,,0,-1,100,0
+0,Points,,0,-1,100,0
+0,BonusX,,0,-1,100,0
+0,Jackpot,,0,-1,100,0
