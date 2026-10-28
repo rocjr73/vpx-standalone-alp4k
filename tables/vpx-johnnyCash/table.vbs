@@ -150,6 +150,7 @@ dim player
 dim players
 dim score(4)
 dim bonus(4)
+Const FreePlay = True ' Start games without inserting coins
 dim credits
 dim gameinprogress
 dim tilt
@@ -423,7 +424,7 @@ end sub
 
 sub newgame()
 gion
-if gameinprogress=false then
+if gameinprogress=false and (FreePlay Or credits >0) then
 if b2son=1 Then
 DOF 129, DOFOn
 'Controller.B2SSetgameover 35,0
@@ -436,6 +437,7 @@ AwardD=true
 bonuspoints=0
 tilt=false
 tiltcount=0
+	If Not FreePlay Then credits=credits-1
 	DOF 129, DOFOff
 	player=1
 	players=1
@@ -450,7 +452,8 @@ gamespecific_gamestart
 troughrelease
 shootagaintimertrig	
 
-elseif gameinprogress=true and players <4 and ball=0 then DOF 129, DOFOn
+elseif gameinprogress=true and players <4 and ball=0 and (FreePlay Or credits >0) then DOF 129, DOFOn
+	If Not FreePlay Then credits=credits-1
 	players=players+1
 end if
 updatedisplays
@@ -674,7 +677,8 @@ End Sub
 
 
 Sub Drain_Hit
-if shootagaincounter>0 Then
+' A flashing Shoot Again insert is timed ball save; solid is an earned extra ball.
+if gameinprogress And tilt=False And (shootagaincounter>0 Or shootagain.state=2) Then
 shootagaincounter=0
 shootagaintimer.enabled=0
 updateextraball
@@ -1015,6 +1019,10 @@ end if
 Tilt = True                      '(Before the timer has reset).
  End If    
  If  Tilt= True Then                 'If you've tilted the game do this.     
+     ' Cancel timed ball save on tilt; preserve earned extra balls.
+     shootagaincounter=0
+     shootagaintimer.Enabled=False
+     updateextraball
      LeftFlipper.RotateToStart       'If the game is tilted then reset the flippers.
      PlaySound "FlipperDown"         'Play the sound.
      RightFlipper.RotateToStart      'If the game is tilted then reset the flippers.
@@ -3546,10 +3554,14 @@ end Sub
 
 
 Sub DMDScore()
+	If HSEnterMode Then Exit Sub
 	If Not UltraDMD is Nothing Then
 		On Error Resume Next
 		OldDMDPrio = 0
-		UltraDMD.DisplayScoreboard Players, Player, Score(1), Score(2), Score(3), Score(4), "Ball " & (Ball+1), "Credits " & credits
+        Dim creditText
+        creditText = "FREE PLAY"
+        If Not FreePlay Then creditText = "Credits " & credits
+		UltraDMD.DisplayScoreboard Players, Player, Score(1), Score(2), Score(3), Score(4), "Ball " & (Ball+1), creditText
 		On Error GoTo 0
 	End If
 End sub
@@ -3624,6 +3636,7 @@ End Sub
 'dmdmessages 6
 dim messagetodisplay
 sub dmdmessages(messagetodisplay)
+If HSEnterMode Then Exit Sub
 select case messagetodisplay
 case 0
 'potc-title
@@ -3764,19 +3777,20 @@ end sub
 dim shootagaincounter
 
 sub shootagaintimertrig()
+shootagaintimer.enabled=0
 shootagaincounter=15
+shootagaintimer.Interval=1000 ' 15 one-second ticks
 shootagaintimer.enabled=1
 updateextraball
 end Sub
 
 sub shootagaintimer_timer()
-if shootagaincounter>0 Then
-shootagaincounter=shootagaincounter-1
-elseif shootagaincounter=0 or shootagaincounter<0 Then
+if shootagaincounter>0 Then shootagaincounter=shootagaincounter-1
+if shootagaincounter<=0 Or tilt=True Then
 shootagaincounter=0
 shootagaintimer.enabled=0
-updateextraball
 end If
+updateextraball
 end Sub
 
 dim dscounter
@@ -4011,38 +4025,49 @@ End Sub
 
 Sub HighScoreEntryInit()
 playsound "yougotahighscore"
-	dmdmessages 0
 	HSEnterMode = True
 	hsCurrentDigit = 0
 	hsCurrentLetter = 1:HSA1=1
 	HighScoreFlashTimer.Interval = 250
 	HighScoreFlashTimer.Enabled = True
 	hsLetterFlash = hsFlashDelay
+	EMReelHSTitle.Visible = False
+	EMReelHSName1.Visible = False
+	EMReelHSName2.Visible = False
+	EMReelHSName3.Visible = False
+	TiDMDScore.Enabled = False
+	ShowInitialsDMD
+End Sub
+
+' Letter values match the existing high-score reels: blank, A-Z, backspace.
+Function InitialsDMDLetter(value)
+    If value >= 1 And value <= 26 Then
+        InitialsDMDLetter = Chr(64 + value)
+    ElseIf value = 27 Then
+        InitialsDMDLetter = "<"
+    Else
+        InitialsDMDLetter = " "
+    End If
+End Function
+
+Sub ShowInitialsDMD()
+    Dim letters(2), entryText
+    If Not HSEnterMode Then Exit Sub
+    If UltraDMD Is Nothing Then Exit Sub
+    letters(0) = InitialsDMDLetter(HSA1)
+    letters(1) = InitialsDMDLetter(HSA2)
+    letters(2) = InitialsDMDLetter(HSA3)
+    If hsLetterFlash = 1 Then letters(hsCurrentLetter - 1) = "_"
+    letters(hsCurrentLetter - 1) = "[" & letters(hsCurrentLetter - 1) & "]"
+    entryText = letters(0) & " " & letters(1) & " " & letters(2)
+    UltraDMD.CancelRendering
+    UltraDMD.DisplayScene00 "", "ENTER INITIALS", 15, entryText, 15, 14, 1000, 14
 End Sub
 
 Sub HighScoreFlashTimer_Timer()
-	hsLetterFlash = hsLetterFlash-1
-	If hsLetterFlash=1 then 'switch to underscore
-		Select Case hsCurrentLetter
-			Case 1:
-				EMReelHSName1.SetValue 28
-			Case 2:
-				EMReelHSName2.SetValue 28
-			Case 3:
-				EMReelHSName3.SetValue 28
-		End Select
-	End If
-	If hsLetterFlash=0 then 'switch back
-		hsLetterFlash = hsFlashDelay
-		Select Case hsCurrentLetter
-			Case 1:
-				EMReelHSName1.SetValue HSA1
-			Case 2:
-				EMReelHSName2.SetValue HSA2
-			Case 3:
-				EMReelHSName3.SetValue HSA3
-		End Select
-	End If
+    hsLetterFlash = hsLetterFlash - 1
+    If hsLetterFlash <= 0 Then hsLetterFlash = hsFlashDelay
+    ShowInitialsDMD
 End Sub
 
 Sub HighScoreProcessKey(keycode)
@@ -4099,6 +4124,9 @@ Sub HighScoreProcessKey(keycode)
 					SaveHighScore 'enter it
 					HighScoreFlashTimer.Enabled = False
 					HSEnterMode = False
+                    UltraDMD.CancelRendering
+                    TiDMDScore.Enabled = True
+                    DMDScore
 				
 					UpdatePostIt
 					EMReelHSTitle.SetValue 0
@@ -4110,6 +4138,7 @@ Sub HighScoreProcessKey(keycode)
 					EMReelHSName3.SetValue 0
 		End Select
     End If
+    If HSEnterMode Then ShowInitialsDMD
 End Sub
 
 Function PostItHighScoreCheck (keycode)
