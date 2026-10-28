@@ -7,7 +7,7 @@ mainNotes: "At first launch you need to insert a coin, after first launch free p
 romChecksum: "A3AA4A83F9CEED0AD28AE98DBA163DAB"
 romNotes: "use Skateboard (Inder 1980) - ROM - skatebrd.zip"
 romUrlOverride: "https://www.vpforums.org/index.php?app=downloads&showfile=13941"
-romVersionOverride: "skatebrd.zip"
+romVersionOverride: "skatebrd"
 tableNotes: "Download Atari 2600 1.01"
 tableVPSId: "9D9IPE4kDC"
 tagline: "'Don't watch TV tonight. Play it!'"
