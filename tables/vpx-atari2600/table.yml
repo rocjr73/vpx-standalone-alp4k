@@ -3,7 +3,7 @@ backglassBundled: true
 backglassChecksum: "337A82AB3EE7844347857002B194EF5B"
 backglassNotes: "Backglass is bundled with table download"
 fps: 60
-mainNotes: "At first launch you need to insert a coin, after first launch free play is enabled."
+mainNotes: ""
 romChecksum: "A3AA4A83F9CEED0AD28AE98DBA163DAB"
 romNotes: "use Skateboard (Inder 1980) - ROM - skatebrd.zip override for this is ok per Wraith"
 romUrlOverride: "https://www.vpforums.org/index.php?app=downloads&showfile=13941"
