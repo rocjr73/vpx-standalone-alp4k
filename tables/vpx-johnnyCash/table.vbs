@@ -879,6 +879,7 @@ end sub
 
 
 sub gameover()
+ShowPostGameHighScore = False
 stopsound "Lostball"
 playsound "Gameover"
 PuPEvent (806) 'gj
@@ -3561,7 +3562,13 @@ Sub DMDScore()
         Dim creditText
         creditText = "FREE PLAY"
         If Not FreePlay Then creditText = "Credits " & credits
-		UltraDMD.DisplayScoreboard Players, Player, Score(1), Score(2), Score(3), Score(4), "Ball " & (Ball+1), creditText
+		If gameinprogress = False Then
+			If ShowPostGameHighScore Then
+				UltraDMD.DisplayScene00 "", "HIGH SCORE", 15, InitialsDMDLetter(HSA1) & InitialsDMDLetter(HSA2) & InitialsDMDLetter(HSA3) & " " & CStr(HSAHighScore), 15, 14, 0, 14
+			End If
+		Else
+			UltraDMD.DisplayScoreboard Players, Player, Score(1), Score(2), Score(3), Score(4), "Ball " & (Ball+1), creditText
+		End If
 		On Error GoTo 0
 	End If
 End sub
@@ -3647,7 +3654,9 @@ case 1
  
 case 2
  UltraDMD.DisplayScene00Ex "", "GAME OVER", 15, -1, "", -1, -1, 14, 0, 14
-GAMEOVERTIMER.ENABLED=1
+GAMEOVERTIMER.Enabled = False
+GAMEOVERTIMER.Interval = 5000
+GAMEOVERTIMER.Enabled = True
 case 3
  UltraDMD.DisplayScene00Ex "", "Extra Ball", 15, -1, "", -1, -1, 14, 0, 14
 case 4
@@ -3677,9 +3686,8 @@ end select
 end Sub
 
 SUB GAMEOVERTIMER_TIMER()
-UltraDMD.CancelRendering
-DMDScore
 GAMEOVERTIMER.ENABLED=0
+If Not HSEnterMode Then UltraDMD.CancelRendering
 END Sub
 
 ' Ramp Soundss ' Thanks JP!!!
@@ -3925,6 +3933,7 @@ Const HighScoreFilename = "A7XHighscore.txt"
 Dim HSAHighScore, HSA1, HSA2, HSA3
 Dim HSScore1000M, HSScore100M, HSScore10M, HSScoreM, HSScore100k, HSScore10k, HSScoreK, HSScore100, HSScore10, HSScore1, HSScorex	'Define 5 different score values for each reel to use
 Dim HSEnterMode, hsLetterFlash, hsEnteredDigits(3), hsCurrentDigit, hsCurrentLetter
+Dim ShowPostGameHighScore
 Const hsFlashDelay = 4
 Const DefaultHighScore = 100
 Const DefaultHSA1 = 1
@@ -4024,6 +4033,7 @@ Sub SaveHighScore
 End Sub
 
 Sub HighScoreEntryInit()
+GAMEOVERTIMER.Enabled = False
 playsound "yougotahighscore"
 	HSEnterMode = True
 	hsCurrentDigit = 0
@@ -4059,7 +4069,7 @@ Sub ShowInitialsDMD()
     letters(2) = InitialsDMDLetter(HSA3)
     If hsLetterFlash = 1 Then letters(hsCurrentLetter - 1) = "_"
     letters(hsCurrentLetter - 1) = "[" & letters(hsCurrentLetter - 1) & "]"
-    entryText = letters(0) & " " & letters(1) & " " & letters(2)
+    entryText = letters(0) & letters(1) & letters(2)
     UltraDMD.CancelRendering
     UltraDMD.DisplayScene00 "", "ENTER INITIALS", 15, entryText, 15, 14, 1000, 14
 End Sub
@@ -4125,6 +4135,7 @@ Sub HighScoreProcessKey(keycode)
 					HighScoreFlashTimer.Enabled = False
 					HSEnterMode = False
                     UltraDMD.CancelRendering
+                    ShowPostGameHighScore = True
                     TiDMDScore.Enabled = True
                     DMDScore
 				
