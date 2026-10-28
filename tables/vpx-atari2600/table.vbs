@@ -16,6 +16,11 @@ Dim bsTrough, dtbank1, bsTopHole, Flipperactive, x
 
 Const cGameName = "skatebrd"
 
+' Free play through automatic credit followed by the normal ROM Start input.
+Const FreePlay = True
+Dim FreePlayStartPending, FreePlayStartHeld
+
+
 Const UseSolenoids = 1
 Const UseLamps = 0
 Const UseGI = 0
@@ -138,6 +143,17 @@ End Sub
 '**********
 
 Sub table1_KeyDown(ByVal Keycode)
+    If FreePlay And keycode = StartGameKey Then
+        If Not FreePlayStartHeld And Not FreePlayStartPending Then
+            FreePlayStartPending = True
+            Call vpmKeyDown(keyInsertCoin1)
+            vpmTimer.AddTimer 100, "FreePlayCoinUp'"
+            ' Allow the core coin delay and ROM credit processing before Start.
+            vpmTimer.AddTimer 1500, "FreePlayStartDown'"
+        End If
+        FreePlayStartHeld = True
+        Exit Sub
+    End If
     If keycode = LeftTiltKey Then Nudge 90, 5:PlaySound SoundFX("fx_nudge", 0), 0, 1, -0.1, 0.25
     If keycode = RightTiltKey Then Nudge 270, 5:PlaySound SoundFX("fx_nudge", 0), 0, 1, 0.1, 0.25
     If keycode = CenterTiltKey Then Nudge 0, 6:PlaySound SoundFX("fx_nudge", 0), 0, 1, 0, 0.25
@@ -148,10 +164,28 @@ Sub table1_KeyDown(ByVal Keycode)
 End Sub
 
 Sub table1_KeyUp(ByVal Keycode)
+    If FreePlay And keycode = StartGameKey Then
+        FreePlayStartHeld = False
+        Exit Sub
+    End If
     If KeyCode = LeftFlipperKey AND FlipperActive Then SolLFlipper 0
     If KeyCode = RightFlipperKey AND FlipperActive Then SolRFlipper 0
     If vpmKeyUp(keycode)Then Exit Sub
     If keycode = PlungerKey Then PlaySoundAt "fx_plunger", Plunger:Plunger.Fire
+End Sub
+
+Sub FreePlayCoinUp()
+    Call vpmKeyUp(keyInsertCoin1)
+End Sub
+
+Sub FreePlayStartDown()
+    Call vpmKeyDown(StartGameKey)
+    vpmTimer.AddTimer 200, "FreePlayStartUp'"
+End Sub
+
+Sub FreePlayStartUp()
+    Call vpmKeyUp(StartGameKey)
+    FreePlayStartPending = False
 End Sub
 
 '*********
