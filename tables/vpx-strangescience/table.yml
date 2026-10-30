@@ -1,0 +1,18 @@
+---
+backglassBundled: true
+backglassChecksum: "0836AFA0F9CF17AB9A64BD79A83C0FC6"
+backglassNotes: "Use same link as table. Download - Strange Science (Bally 1986) v1.3a fAthAwg"
+fps: 60
+mainNotes: "Give the Table about 5 seconds to fully load rom."
+romChecksum: "B26F200B366DB3F197451DEA833CC2B7"
+romNotes: "Download - strngsci.zip"
+romVPSId: "n7Uij8Of"
+tableNotes: "Download - Strange Science (Bally 1986) v1.3a fAthAwg"
+tableVPSId: "cm91AnGV"
+tagline: "'Pinball Chemistry' & 'High Voltage Excitement!'"
+testers:
+  - "Fathawg"
+  - "PBW23"
+  - "Rocjr73"
+vpxChecksum: "0D83F7F23D68ED5044597D0BCB5E82A3"
+vpxVPSId: "1rZqCEfeeL"
