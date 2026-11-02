@@ -69,10 +69,10 @@ End Sub
 '**************************
 '   PinUp Player USER Config
 '**************************
-    dim usePuPDMD       : usePuPDMD=false       ' set to false to not use PuPDMD for a DMD (different that BG scoring)
+    dim usePuPDMD       : usePuPDMD=True       ' set to false to not use PuPDMD for a DMD (different that BG scoring)
 	Const PuPDMDDriverType = 2  ' 2=FULLDMD (large/16:9 LCD). This table only supports the 16:9 fullsize option
 	Const useRealDMDScale = 0    ' 0 or 1 for RealDMD scaling. No change PLZ
-	dim useDMDVideos    : useDMDVideos=false   ' true or false to use DMD splash videos.
+	dim useDMDVideos    : useDMDVideos=true   ' true or false to use DMD splash videos.
 	Dim pGameName       : pGameName="Knight_Rider"    'pupvideos foldername, probably set to cGameName in realworld
 
 
@@ -86,7 +86,7 @@ Randomize
 
 Const BallSize = 50    ' 50 is the normal size used in the core.vbs, VP kicker routines uses this value divided by 2
 Const BallMass = 1
-Const SongVolume = 0.3 ' 1 is full volume. Value is from 0 to 1
+Const SongVolume = 0.5 ' 1 is full volume. Value is from 0 to 1
 
 ' Load the core.vbs for supporting Subs and functions
 
@@ -99,12 +99,12 @@ On Error Goto 0
 
 
 '----- Shadow Options -----
-Const DynamicBallShadowsOn = 0		'0 = no dynamic ball shadow, 1 = enable dynamic ball shadow
+Const DynamicBallShadowsOn = 1		'0 = no dynamic ball shadow, 1 = enable dynamic ball shadow
 
 '----- Others Options -----
 Const UltraDMDUpdateTime	= 5000	'UltraDMD update time (msec).  Increase value if you encounter stutter with UltraDMD on
 Const UseUltraDMD = 0				'0 = Don't use UltraDMD, 1=Use it
-Const UseBGB2S = 0					'0 = Don't use B2S, 1=Use it (0 = Displaying Multiplayer Scores on the PUPDMD)
+Const UseBGB2S = 1					'0 = Don't use B2S, 1=Use it (0 = Displaying Multiplayer Scores on the PUPDMD)
 
 ' Define any Constants
 Const cGameName = "Knight_Rider"
@@ -283,7 +283,7 @@ Sub Table1_Init()
 	If UseUltraDMD > 0 Then LoadUltraDMD
 
     ' freeplay or coins
-    bFreePlay = True 'we want coins
+    bFreePlay = True 'free play enabled
 
     'if bFreePlay = false Then DOF 125, DOFOn
 
