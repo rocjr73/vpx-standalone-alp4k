@@ -1,0 +1,28 @@
+---
+backglassBundled: true
+backglassChecksum: "C65FA197632D646D7B8DF10B30EA4123"
+backglassNotes: "Included in zip"
+fps: 60
+mainNotes: "Please read instructions to install table"
+romBundled: true
+romChecksum: "9939617473A0C5797165D42127BD690B"
+romNotes: "included in zip"
+romVersionOverride: "andretti"
+tableNotes: >-
+  Click the download link Once on google drive click the arrow next to Mario Kart Pinball (RyGuy 417 2022)
+  Click download and it will download all files as a zip.
+  In the wizard select install all files at once and it will pick the correct files needed for installation.
+tableVPSId: "JJudLgmP4L"
+tagline: "'Get Behind the Wheel! Drivers, start your engines!'"
+testers:
+  - "Rocjr73"
+vpxArchiveFormat: "zip"
+vpxChecksum:
+  - "A4528C05644AD5D11B27C0D652D8B270"
+  - "4CCE6AB6741123689D4F6C4593595E24"
+vpxExtractExtra:
+  - "Mario Kart Pinball (RyGuy417 2022)/MK"
+postInstallRename:
+  - source: "MK"
+    destination: "music/MK"
+vpxVPSId: "nCyHfrN2fA"
