@@ -1,8 +1,8 @@
 ---
 altSoundArchiveFormat: "zip"
-altSoundArchiveRoot: "MK"
+altSoundArchiveRoot: "Mario Kart Pinball (RyGuy417 2022)/MK"
 altSoundBundled: true
-altSoundChecksum: "8A0630EA83D15B69613991CFBC4885C3"
+altSoundChecksum: "3B6E4739A99CC337254FDF34C81FE92D"
 altSoundNotes: "Needed for gameplay"
 backglassBundled: true
 backglassChecksum: "C65FA197632D646D7B8DF10B30EA4123"
@@ -13,7 +13,8 @@ romBundled: true
 romChecksum: "9939617473A0C5797165D42127BD690B"
 romNotes: "included in table zip"
 tableNotes: >-
-  Click the arrow next to Mario Kart Pinball (RYGUY417 2022) and click download,
+  Click the download link and that will take you to google drive.
+  On the google drive page click the arrow next to Mario Kart Pinball (RYGUY417 2022) and click download,
   All files will be downloaded as a zip. Select pick all files at once and it will find all the files needed for this
   table install.
 tableVPSId: "JJudLgmP4L"
