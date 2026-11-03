@@ -1,0 +1,23 @@
+---
+backglassAuthorsOverride:
+  - "RYGUY417"
+backglassChecksum: "C65FA197632D646D7B8DF10B30EA4123"
+# yamllint disable-line rule:line-length
+backglassImageOverride: "https://vpuniverse.com/screenshots/monthly_2022_10/18DC16E7-B1B0-4739-B4EE-320902C1A0BE.jpeg.e0886ee5c8e4fe332c65f00e0db56aa8.jpeg"
+backglassNotes: "Download Mario Kart Pinball (RyGuy417 2022) Full DMD"
+backglassUrlOverride: "https://drive.google.com/drive/folders/1hb09mm3w9KN3vJKGrOueEjkkgj6FQdBG"
+fps: 60
+mainNotes: >-
+  This table needs a manual install for music. Use the same table link to download the MK folder. Create a music folder
+  in the same location as your .vpx table and place the MK folder in it.
+romChecksum: "9939617473A0C5797165D42127BD690B"
+romNotes: "Download andretti.zip"
+romUrlOverride: "https://drive.google.com/drive/folders/1hb09mm3w9KN3vJKGrOueEjkkgj6FQdBG"
+romVersionOverride: "andretti"
+tableNotes: "Download Mario Kart Pinball (RyGuy417 2022).vpx"
+tableVPSId: "JJudLgmP4L"
+tagline: "'Let's-a-go!'"
+testers:
+  - "Rocjr73"
+vpxChecksum: "4CCE6AB6741123689D4F6C4593595E24"
+vpxVPSId: "nCyHfrN2fA"
