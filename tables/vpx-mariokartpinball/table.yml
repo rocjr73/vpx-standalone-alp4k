@@ -8,7 +8,7 @@ backglassNotes: "Download Mario Kart Pinball (RyGuy417 2022) Full DMD"
 backglassUrlOverride: "https://drive.google.com/drive/folders/1hb09mm3w9KN3vJKGrOueEjkkgj6FQdBG"
 fps: 60
 mainNotes: >-
-  This table needs a manual install for music. Use the same table link to download the MK folder. Create a music folder
+  This table needs a manual install for music. Use the same table link to download the MK folder and unzip it. Create a music folder
   in the same location as your .vpx table and place the MK folder in it.
 romChecksum: "9939617473A0C5797165D42127BD690B"
 romNotes: "Download andretti.zip"
