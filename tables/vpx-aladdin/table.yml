@@ -1,0 +1,19 @@
+---
+fps: 60
+mainNotes: >-
+  Special Note: 'The music tracks for balls 2 and 3 are in French. The table developer hasn’t released the English
+  update yet, but it’s still a very nice and fun table to play.'
+pupArchiveFormat: "zip"
+pupArchiveRoot: "Aladdin/"
+pupChecksum: "676FF10A9B39ABA76102EA96DC5D409E"
+pupFileUrl: "https://vpuniverse.com/files/file/30068-aladdin-original-2026-tombg/"
+pupNotes: "Download - Aladdin.zip"
+pupRequired: true
+pupVersion: "1.0.0"
+tableNotes: "Download 'Aladdin (Original 2026) Tombg.vpx'"
+tableVPSId: "lQ0KnHAZNx"
+tagline: "'Imagine if you had three wishes, three hopes, three dreams, and they all could come true.'"
+testers:
+  - "Rocjr73"
+vpxChecksum: "C939803001004881CEF9FD9304763D44"
+vpxVPSId: "TEMfFo9wa2"
