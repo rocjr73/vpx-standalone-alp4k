@@ -2,6 +2,7 @@
 backglassChecksum: "47DDF9413A98B732922E4277C1F504FB"
 backglassNotes: "Download - Dukes Of Hazzard (2022).directb2s from the directb2s link, not the b2s next to the .vpx"
 backglassVPSId: "zaqvkCiAAV"
+enabled: false  # TEMP: romVPSId ACanTzGjXs not found in VPSDB; re-enable after fixing the ROM id
 fps: 60
 pupArchiveFormat: "zip"
 pupArchiveRoot: "Dukes with VR Option Pup Pack/dukes"
