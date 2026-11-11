@@ -1,0 +1,17 @@
+---
+fps: 60
+mainNotes: "version 2.0"
+pupArchiveFormat: "zip"
+pupArchiveRoot: "Clue"
+pupChecksum: "BC4F19C90EA71C754DA98BCFE53E066B"
+pupFileUrl: "https://vpuniverse.com/files/file/18964-clue-nfozzy-scorbit/"
+pupNotes: "Download - 'Clue.zip'"
+pupRequired: true
+pupVersion: "2.0"
+tableNotes: "Download - 'Clue-nFozzy-Scorbit.vpx'"
+tableVPSId: "eUtQ8FCu"
+tagline: "Seven Suspects, Six Weapons, Five Bodies and Three Endings."
+testers:
+  - "Rocjr73"
+vpxChecksum: "E5F98FEC22B9ADD3923FF88CC22242BE"
+vpxVPSId: "LaIGFJMC5_"

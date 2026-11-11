@@ -1,0 +1,23 @@
+---
+fps: 60
+mainNotes: "Version 1.0.0"
+pupArchiveFormat: "rar"
+pupArchiveRoot: "TopGun"
+pupBundled: true
+pupChecksum: "76F4483857402A478A1C9290A3876F09"
+pupNotes: "Included with table download"
+pupRequired: true
+pupVersion: "1.0.0"
+romChecksum: "FB816FC071BB7139ED18901FC6C275B0"
+romFileUrl: "https://www.vpforums.org/index.php?app=downloads&showfile=585"
+romVersionOverride: "sshuttle"
+romNotes: "Download - ' sshuttle.zip'"
+romVPSId: "3v-q8zIT"
+tableFileUrl: "https://vpuniverse.com/files/file/29348-topgun-2019-vr-room/"
+tableNotes: "Download - 'TopGun (2019)-(VR ROOM) .vpx 1.0.0'"
+tableVPSId: "6uH9xFc6"
+tagline: "'I feel the need... the need for speed!'"
+testers:
+  - "Rocjr73"
+vpxChecksum: "1E2AFBA8254F1A29599DFCA5C57AD281"
+vpxVPSId: "HhBYSNhtkx"
