@@ -1,0 +1,16 @@
+---
+fps: 60
+pupArchiveFormat: "rar"
+pupArchiveRoot: "Rambo"
+pupBundled: true
+pupChecksum: "DDCD945E407D284C20FE350E9BDDF30C"
+pupNotes: "Pup Pack is included in 'RAMBO_720p.rar' Table Download"
+pupRequired: true
+pupVersion: "1.0"
+tableNotes: "Download - 'RAMBO_720p.rar'"
+tableVPSId: "4QCUJ9D3l7"
+tagline: "'Live for nothing, or die for something.'"
+testers:
+  - "Rocjr73"
+vpxChecksum: "E0D898F82B6B8A61718B516220B01556"
+vpxVPSId: "mEngtHgmpQ"
